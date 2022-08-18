@@ -26,8 +26,8 @@ public class FacultyRepositoryTest {
     @BeforeEach
     void setUp() {
         Office office = officeRepository.save(new Office(100, "Ey"));
-        facultyRepository.save(new Faculty("Jose", "Caro", "Department", false, office));
-        facultyRepository.save(new Faculty("Jaume", "Caro", "Department", false, office));
+        facultyRepository.save(new Faculty("Jose", "Caro", "Department", false, List.of(office)));
+        facultyRepository.save(new Faculty("Jaume", "Caro", "Department", false, List.of(office)));
     }
 
 

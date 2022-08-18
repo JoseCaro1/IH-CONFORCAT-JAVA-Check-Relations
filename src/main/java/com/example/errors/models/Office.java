@@ -14,7 +14,7 @@ public class Office {
 
     private String building;
 
-    @OneToMany(mappedBy = "office")
+    @ManyToMany(mappedBy = "officeList")
     private List<Faculty> facultyList;
 
     public Office() {

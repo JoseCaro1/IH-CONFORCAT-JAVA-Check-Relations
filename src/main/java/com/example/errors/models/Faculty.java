@@ -1,9 +1,7 @@
 package com.example.errors.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Faculty {
@@ -17,18 +15,19 @@ public class Faculty {
 
     private boolean ternure;
 
-    @ManyToOne
-    private Office office;
+    @ManyToMany
+    @JoinTable(name = "faculty_office", joinColumns = {@JoinColumn(name = "faculty_id")}, inverseJoinColumns = {@JoinColumn(name = "office_id")})
+    private List<Office> officeList;
 
     public Faculty() {
     }
 
-    public Faculty(String firstName, String lastName, String department, boolean ternure, Office office) {
+    public Faculty(String firstName, String lastName, String department, boolean ternure, List<Office> office) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
         this.ternure = ternure;
-        this.office = office;
+        this.officeList = office;
     }
 
     public String getFirstName() {
@@ -63,12 +62,11 @@ public class Faculty {
         this.ternure = ternure;
     }
 
-    public Office getOffice() {
-        return office;
+    public List<Office> getOfficeList() {
+        return officeList;
     }
 
-    public void setOffice(Office office) {
-        this.office = office;
+    public void setOfficeList(List<Office> officeList) {
+        this.officeList = officeList;
     }
-
 }
