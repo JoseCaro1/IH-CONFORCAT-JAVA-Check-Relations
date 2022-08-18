@@ -1,6 +1,7 @@
 package com.example.errors.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Office {
@@ -13,12 +14,23 @@ public class Office {
 
     private String building;
 
+    @OneToMany(mappedBy = "office")
+    private List<Faculty> facultyList;
+
     public Office() {
     }
 
     public Office(int roomNumber, String building) {
         this.roomNumber = roomNumber;
         this.building = building;
+    }
+
+    public List<Faculty> getFacultyList() {
+        return facultyList;
+    }
+
+    public void setFacultyList(List<Faculty> facultyList) {
+        this.facultyList = facultyList;
     }
 
     public Long getId() {

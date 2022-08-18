@@ -7,7 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 
 @SpringBootTest
@@ -23,23 +25,17 @@ public class FacultyRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        Office office = officeRepository.save(new Office(100,"Ey"));
-        facultyRepository.save(new Faculty("Jose","Caro","Department",false,office));
-    }
-
-    @AfterEach
-    void tearDown() {
-
-        facultyRepository.deleteAll();
-        officeRepository.deleteAll();
+        Office office = officeRepository.save(new Office(100, "Ey"));
+        facultyRepository.save(new Faculty("Jose", "Caro", "Department", false, office));
+        facultyRepository.save(new Faculty("Jaume", "Caro", "Department", false, office));
     }
 
 
     @Test
     void checkQuery() {
-        List<Faculty> facultyList= facultyRepository.findAllFacultyByLastName("Caro");
+        List<Faculty> facultyList = facultyRepository.findAll();
 
-        assertEquals(1,facultyList.size());
+        assertEquals(2, facultyList.size());
 
     }
 }

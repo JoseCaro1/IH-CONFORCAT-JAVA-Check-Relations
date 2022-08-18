@@ -2,6 +2,7 @@ package com.example.errors.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,7 +17,7 @@ public class Faculty {
 
     private boolean ternure;
 
-    @OneToOne
+    @ManyToOne
     private Office office;
 
     public Faculty() {
